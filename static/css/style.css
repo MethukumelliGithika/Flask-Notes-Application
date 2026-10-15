@@ -1,0 +1,35 @@
+body { font-family: "Segoe UI", system-ui, sans-serif; }
+.navbar-brand { font-weight: 600; letter-spacing: .3px; }
+.card { border: 0; border-radius: 12px; }
+.note-card { transition: transform .15s ease, box-shadow .15s ease; }
+.note-card:hover { transform: translateY(-4px); box-shadow: 0 .6rem 1.2rem rgba(0,0,0,.12) !important; }
+.note-text { white-space: pre-wrap; word-break: break-word; }
+footer { font-size: .9rem; }
+@media (max-width: 576px) {
+  .navbar .btn { padding: .2rem .5rem; font-size: .8rem; }
+}
+/* ---------- Theme colours ---------- */
+body { background: #f4f3ff; }
+
+.app-navbar {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  box-shadow: 0 2px 10px rgba(79, 70, 229, .35);
+}
+
+/* white button with purple text */
+.btn-nav-light { background: #fff; color: #4f46e5; border: 0; font-weight: 500; }
+.btn-nav-light:hover { background: #ede9fe; color: #4f46e5; }
+
+/* pink-orange accent button */
+.btn-nav-accent { background: #ff6b9d; color: #fff; border: 0; font-weight: 500; }
+.btn-nav-accent:hover { background: #ff4d8a; color: #fff; }
+
+/* transparent button with white border */
+.btn-nav-outline { background: transparent; color: #fff; border: 1.5px solid #fff; }
+.btn-nav-outline:hover { background: #fff; color: #4f46e5; }
+
+.app-footer {
+  background: linear-gradient(90deg, #1e1b4b, #312e81);
+  color: #fff;
+}
+.app-footer small { color: #c7d2fe; }
