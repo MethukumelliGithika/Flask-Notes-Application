@@ -3,10 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import mysql.connector
 from dotenv import load_dotenv
 load_dotenv()
-
+import os
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
-import os
+
 
 
 DB_CONFIG = {
