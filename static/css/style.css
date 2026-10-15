@@ -5,9 +5,7 @@ body { font-family: "Segoe UI", system-ui, sans-serif; }
 .note-card:hover { transform: translateY(-4px); box-shadow: 0 .6rem 1.2rem rgba(0,0,0,.12) !important; }
 .note-text { white-space: pre-wrap; word-break: break-word; }
 footer { font-size: .9rem; }
-@media (max-width: 576px) {
-  .navbar .btn { padding: .2rem .5rem; font-size: .8rem; }
-}
+
 /* ---------- Theme colours ---------- */
 body { background: #f4f3ff; }
 
@@ -20,7 +18,7 @@ body { background: #f4f3ff; }
 .btn-nav-light { background: #fff; color: #4f46e5; border: 0; font-weight: 500; }
 .btn-nav-light:hover { background: #ede9fe; color: #4f46e5; }
 
-/* pink-orange accent button */
+/* pink accent button */
 .btn-nav-accent { background: #ff6b9d; color: #fff; border: 0; font-weight: 500; }
 .btn-nav-accent:hover { background: #ff4d8a; color: #fff; }
 
@@ -33,3 +31,33 @@ body { background: #f4f3ff; }
   color: #fff;
 }
 .app-footer small { color: #c7d2fe; }
+
+/* ---------- Responsive ---------- */
+
+/* Phone: menu buttons become full width */
+.nav-actions .btn { width: 100%; padding: .5rem; }
+.nav-actions span { text-align: center; }
+
+/* Laptop: normal small buttons in one row */
+@media (min-width: 992px) {
+  .nav-actions .btn { width: auto; padding: .25rem .6rem; }
+}
+
+/* Phone: tighter spacing, bigger tap targets */
+@media (max-width: 576px) {
+  main.container { padding-left: 14px; padding-right: 14px; }
+  h4 { font-size: 1.2rem; }
+  .card-body { padding: 1rem !important; }
+  textarea.form-control { font-size: 16px; }
+}
+/* Centre the form in the middle of the page (phone + laptop) */
+.auth-wrap {
+  min-height: calc(100vh - 230px);
+  display: flex;
+  justify-content: center;   /* left-right centre */
+  align-items: center;       /* top-bottom centre */
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+}
