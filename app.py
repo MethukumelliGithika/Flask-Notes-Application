@@ -1,38 +1,39 @@
 from functools import wraps
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import mysql.connector
+import sqlite3
 from dotenv import load_dotenv
 load_dotenv()
 import os
+
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
-
-
-DB_CONFIG = {
-    "host": "localhost",
-    "user": os.getenv("DB_USER", "root"),
-    "password": os.getenv("DB_PASSWORD"),
-    "database": "notes_db",
-}
+DB_NAME = "notes.db"
 
 def run(sql, params=(), one=False, many=False, commit=False):
-    """Run one query and return rows / lastrowid / rowcount as needed."""
-    conn = mysql.connector.connect(**DB_CONFIG)
-    cur = conn.cursor(dictionary=True)
+    conn = sqlite3.connect(DB_NAME)
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
+    cur = conn.cursor()
+
     try:
+        sql = sql.replace("%s", "?")
         cur.execute(sql, params)
+
         if commit:
             conn.commit()
             return cur.rowcount
+
         if one:
-            return cur.fetchone()
+            row = cur.fetchone()
+            return dict(row) if row else None
+
         if many:
-            return cur.fetchall()
+            return [dict(row) for row in cur.fetchall()]
+
     finally:
         cur.close()
         conn.close()
-
 
 def login_required(view):
     @wraps(view)

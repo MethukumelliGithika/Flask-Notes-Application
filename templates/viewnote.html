@@ -3,7 +3,7 @@
 {% block content %}
 <div class="card shadow-sm"><div class="card-body">
   <h4>{{ note.title }}</h4>
-  <div class="small text-muted mb-3">{{ note.created_at.strftime('%d %b %Y, %I:%M %p') }}</div>
+  <div class="small text-muted mb-3">{{ note.created_at }}</div>
   <p class="note-text">{{ note.content }}</p>
   <a class="btn btn-warning" href="{{ url_for('updatenote', note_id=note.id) }}">Edit</a>
   <a class="btn btn-secondary" href="{{ url_for('viewall') }}">Back</a>
